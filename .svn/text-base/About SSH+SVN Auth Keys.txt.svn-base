@@ -1,0 +1,56 @@
+####################################
+##
+## About Using Authorization keys with PuTTy and SSH:
+##
+####################################
+
+Using the authorized_key file to log in SSH provides easier access and better security.
+
+private/public keys are already provided for each user at this stage, but if you want to set up one on your self, or not sure how to use them, please follow the steps below:
+
+(1) You need to ssh into the server with your user name and password
+(2) Create private/public keys
+	- cd
+	  mkdir .ssh
+	  ssh-keygen -t rsa //or simply ssh-keygen
+	- Follow the steps prompted. If you do not want to use a passphrase as an extra level of security, just press Enter when prompted. The ssh-keygen command will create two files in the .ssh directory, ida_rsa.pub and ida_rsa, or whatever you named them during prompt.
+
+(3) Create "authorized_keys" file if not existed already
+	- sudo nano /Users/[short username]/.ssh/authorized_keys
+	- The file must start with: (if not, add it in begining)
+	command="/usr/local/aliasbin/svnserve -t --tunnel-user=[short username] -r /svn" ssh-dsa 
+(4) Add public key in authorized_keys
+	- sudo cat [filename for public key i.e. ida_rsa.pub] >> authorized_keys
+	  sudo chown -R .ssh
+	  sudo chmod 700 .ssh
+	  sudo chmod 600 .ssh/authorized_keys
+(5) *For MAC clients*
+	ssh-add -K .ssh/id_whatever_your_rivate_key_is
+    *For Windows*
+	- You need two things: puttygen.exe; putty.exe and tortoise
+NOW open puttygen.exe
+under actions select "load" and load the id_dsa file
+enter the passphrase you set when you generated the key on the server. Puttygen will now convert the key to something that putty will understand
+save that file to something like
+pivatekey.ppk
+NOW change your putty settings under "connection > SSH > auth" to use
+privatekey.ppk
+NOW try and connect
+	- In Tortoise Setting > Network >SSH Client, add:
+	  [your TortoiseSVN directory]\bin\TortoisePlink.exe
+
+
+###################
+## References
+###################
+Setting Up A SVN+SSH Server On The Mac //
+http://www.scottboms.com/2008/10/macsvnsshserver/
+
+SSH private keys on Mac OSX
+http://fplanque.com/dev/mac/secure-ssh-private-keys-on-mac-osx-10-5
+
+TortoiseSVN over SSH on Windows via PuTTY
+http://www.vectorns.com/blog/11-tortoisesvn-over-ssh-on-windows-via-putty
+
+Set up SSH keys: Frustration with "Server refused our key"
+http://andremolnar.com/how_to_set_up_ssh_keys_with_putty_and_not_get_server_refused_our_key

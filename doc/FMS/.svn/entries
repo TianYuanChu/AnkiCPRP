@@ -1,0 +1,52 @@
+10
+
+dir
+40
+svn+ssh://ryanchu@ns-dev2.educ.sfu.ca/svnroot/repo-anki/doc/FMS
+svn+ssh://ryanchu@ns-dev2.educ.sfu.ca/svnroot/repo-anki
+
+
+
+2011-03-19T18:35:04.552628Z
+7
+kkk
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6c1e101b-6a7a-4aa7-a015-713dd996eaf4
+
+QA
+dir
+
+TN_technical-notes
+dir
+
+ISIT_information-technology
+dir
+
+3rd_Party
+dir
+
+SD_Software-Design
+dir
+
+DFS_Detailed-Functional-Specifications
+dir
+
+PP_project-planning
+dir
+
+RFS_Release-Functional-Specifications
+dir
+
